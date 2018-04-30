@@ -9,8 +9,8 @@ def sample_data():
     # print(os.listdir("eeg_brain"))
 
     #getting data
-    demographic_info = pd.read_csv("eeg_brain/demographic_info.csv")
-    data_eeg = pd.read_csv("eeg_brain/EEG_data.csv")
+    demographic_info = pd.read_csv("data/demographic_info.csv")
+    data_eeg = pd.read_csv("data/EEG_data.csv")
 
     #casting subject ids and ground truth labels to int
     data_eeg['SubjectID'] = data_eeg['SubjectID'].astype(int)
@@ -31,8 +31,8 @@ def sample_data():
     y_labels = data['user-definedlabeln']
 
     #splitting data after normalizing 
-    X, X_test, Y, Y_test = train_test_split(x_features, y_labels, test_size=0.1, random_state=42)
-    X_train, X_val, Y_train, Y_val = train_test_split(X, Y, test_size=0.1, random_state=42)
+    X, X_test, Y, Y_test = train_test_split(x_features, y_labels, test_size=0.08, random_state=42)
+    X_train, X_val, Y_train, Y_val = train_test_split(X, Y, test_size=0.2, random_state=42)
     
     #getting data from pandas object
     X_train = X_train.values

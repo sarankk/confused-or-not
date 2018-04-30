@@ -89,9 +89,7 @@ def train_model(dataloaders, model, criterion, optimizer, dataset_sizes):
 				# forward
 				outputs = model(inputs)
 				_, preds = torch.max(outputs.data, 1)
-				#print "outputs ", outputs
-				# print(type(outputs.data))
-				# print(type(labels.data))
+
 				loss = criterion(outputs, labels)
 
 				# backward + optimize only if in training phase
