@@ -4,6 +4,8 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
+import pickle
+
 def sample_data():
     #printing filenames within the directory
     # print(os.listdir("eeg_brain"))
@@ -31,8 +33,8 @@ def sample_data():
     y_labels = data['user-definedlabeln']
 
     #splitting data after normalizing 
-    X, X_test, Y, Y_test = train_test_split(x_features, y_labels, test_size=0.08, random_state=42)
-    X_train, X_val, Y_train, Y_val = train_test_split(X, Y, test_size=0.2, random_state=42)
+    X, X_test, Y, Y_test = train_test_split(x_features, y_labels, test_size=0.1, random_state=42)
+    X_train, X_val, Y_train, Y_val = train_test_split(X, Y, test_size=0.1, random_state=42)
     
     #getting data from pandas object
     X_train = X_train.values
@@ -43,5 +45,13 @@ def sample_data():
     Y_test = Y_test.values
 
     return X_train, X_val, X_test, Y_train, Y_val, Y_test
+
+def open_pickle(pklfile)    :
+    with open(pklfile +'.pkl', 'rb') as outp :
+        X = pickle.load(outp)
+        Y = pickle.load(outp)
+
+    return X, Y
+
     
 
